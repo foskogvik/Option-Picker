@@ -19,7 +19,7 @@ function App() {
     const fetchOptions = async () => {
       try {
         const res = await fetch(
-          'http://option-picker-backend.herokuapp.com/options'
+          'https://option-picker-backend.herokuapp.com/options'
         );
         if (!res.ok) {
           throw Error('Cannot connect to server.');
@@ -42,7 +42,7 @@ function App() {
   const clearOptions = async () => {
     await Promise.all(
       options.map(({ id }) => {
-        fetch(`http://option-picker-backend.herokuapp.com/options/${id}`, {
+        fetch(`https://option-picker-backend.herokuapp.com/options/${id}`, {
           method: 'DELETE',
         });
       })
@@ -52,7 +52,7 @@ function App() {
 
   // Delete one option
   const deleteOption = async (id) => {
-    await fetch(`http://option-picker-backend.herokuapp.com/options/${id}`, {
+    await fetch(`https://option-picker-backend.herokuapp.com/options/${id}`, {
       method: 'DELETE',
     });
     setOptions(options.filter((option) => option.id !== id));
@@ -63,7 +63,7 @@ function App() {
   const addOptionToDb = async (option) => {
     try {
       const res = await fetch(
-        'http://option-picker-backend.herokuapp.com/options',
+        'https://option-picker-backend.herokuapp.com/options',
         {
           method: 'POST',
           headers: {
