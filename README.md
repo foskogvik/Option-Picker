@@ -8,4 +8,4 @@ There is a flaw in how id's are incremented as it consistently goes up from 1 wh
 This goes on until the running instance is refreshed.
 This is due to the way JSON-Server auto-inciments entries. I have yet to find a work around.
 
-Hosted at vercel: Coming soon
+Hosted at vercel: https://option-picker.vercel.app/
