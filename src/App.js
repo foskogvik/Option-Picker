@@ -52,7 +52,7 @@ function App() {
 
   // Delete one option
   const deleteOption = async (id) => {
-    await fetch(`http://option-picker-backend.herokuapp.com/${id}`, {
+    await fetch(`http://option-picker-backend.herokuapp.com/options/${id}`, {
       method: 'DELETE',
     });
     setOptions(options.filter((option) => option.id !== id));

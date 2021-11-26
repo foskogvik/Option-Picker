@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel ./public/index.html",
-    "build": "parcel build ./public/index.html",
+    "build": "parcel build ./public/index.html --public-url ./",
     "server": "json-server db.json --port 5000"
   },
   "repository": {
