@@ -1,4 +1,4 @@
-import { BigButton } from "./styles/Action.styled";
+import { BigButton } from './styles/Action.styled';
 
 const Action = ({ handlePick, hasOptions }) => {
   return (

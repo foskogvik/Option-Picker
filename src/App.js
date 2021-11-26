@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { ModalProvider } from "styled-react-modal";
+import { useState, useEffect } from 'react';
+import { ModalProvider } from 'styled-react-modal';
 
-import Header from "./Components/Header";
-import Action from "./Components/Action";
-import Options from "./Components/Options";
-import AddOption from "./Components/AddOption";
-import OptionModal from "./Components/OptionModal";
+import Header from './Components/Header';
+import Action from './Components/Action';
+import Options from './Components/Options';
+import AddOption from './Components/AddOption';
+import OptionModal from './Components/OptionModal';
 
-import { Wrapper, Container, Widget } from "./styles/App.styled";
+import { Wrapper, Container, Widget } from './styles/App.styled';
 
 function App() {
   // State
@@ -18,9 +18,11 @@ function App() {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const res = await fetch("http://localhost:5000/options");
+        const res = await fetch(
+          'http://option-picker-backend.herokuapp.com/options'
+        );
         if (!res.ok) {
-          throw Error("Cannot connect to server.");
+          throw Error('Cannot connect to server.');
         } else {
           const data = await res.json();
           setOptions(data);
@@ -40,8 +42,8 @@ function App() {
   const clearOptions = async () => {
     await Promise.all(
       options.map(({ id }) => {
-        fetch(`http://localhost:5000/options/${id}`, {
-          method: "DELETE",
+        fetch(`http://option-picker-backend.herokuapp.com/options/${id}`, {
+          method: 'DELETE',
         });
       })
     );
@@ -50,8 +52,8 @@ function App() {
 
   // Delete one option
   const deleteOption = async (id) => {
-    await fetch(`http://localhost:5000/options/${id}`, {
-      method: "DELETE",
+    await fetch(`http://option-picker-backend.herokuapp.com/${id}`, {
+      method: 'DELETE',
     });
     setOptions(options.filter((option) => option.id !== id));
     // IDs auto increment kinda strangely. Not worrying about it.
@@ -60,13 +62,16 @@ function App() {
   // If local checks pass. write new option to DB
   const addOptionToDb = async (option) => {
     try {
-      const res = await fetch("http://localhost:5000/options", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(option),
-      });
+      const res = await fetch(
+        'http://option-picker-backend.herokuapp.com/options',
+        {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(option),
+        }
+      );
       const data = await res.json();
 
       setOptions([...options, data]);
@@ -80,18 +85,17 @@ function App() {
   //Check validity of option and add to state.
   const addOption = (option) => {
     if (!option.text) {
-      return "Enter valid value to add item";
+      return 'Enter valid value to add item';
     } else if (
       options.find((existingOption) => {
         return existingOption.text === option.text;
       })
     ) {
-      return "This option already exists";
+      return 'This option already exists';
     } else {
       addOptionToDb(option);
     }
   };
-  // this function seems to always console log its set value first. Might wanna look into it
   const handleClearSelectedOption = () => {
     setSelectedOption(undefined);
   };
