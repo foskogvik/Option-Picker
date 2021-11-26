@@ -1,6 +1,6 @@
 # Option-Picker
 
-This project is based on the "Indecision App" from Andrew Meads React course on udemy. udemy.com/course/react-2nd-edition/
+This project is based on the "Indecision App" from Andrew Meads React course on udemy. https://udemy.com/course/react-2nd-edition/
 I have edited the application to use the JSON-server project which let's you create a mock database for use with frontends. https://github.com/typicode/json-server.
 I have also used styled-components in place of SCSS for styling.
 
